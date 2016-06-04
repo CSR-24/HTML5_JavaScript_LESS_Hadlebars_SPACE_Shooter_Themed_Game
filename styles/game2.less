@@ -1,0 +1,82 @@
+@default_border: 0;
+@background_Color_GC: green;
+@background_Color_GH: black;
+@background_Color_GD: black;
+@background_Color_GF: cornflowerblue;
+@color_controlPanel:  lightgreen;
+@color_instructionPanel: lightgreen;
+@color_themePanel: lightgreen;
+@default_gameContainerW : 1350px;
+@default_gameContainerH : 620px;
+@default_gameHeaderH : 20px;
+@default_gameDivH : 400px;
+@gameHeaderBottom : @default_gameContainerH - @default_gameHeaderH ;
+@gameFooterTop: @default_gameDivH + @default_gameHeaderH;
+@canvasBottom: @default_gameContainerH - @gameFooterTop;
+
+.borderStyle(@border){
+    border:@border;
+    border-collapse: collapse;
+    border-style: solid;
+}
+    
+.gameMargin(@l,@r,@t,@bo){
+    left: @l;
+    right: @r;
+    top: @t;
+    bottom: @bo;
+    }    
+    
+#gameContainer{
+    margin:auto;
+    width:  @default_gameContainerW;
+    height: @default_gameContainerH;
+    position:fixed;
+    .borderStyle(@default_border);
+    background-color: @background_Color_GC;
+}
+    
+
+#gameHeader{
+    position:absolute;
+    top: 0;
+    .gameMargin(0,0,0,600 );
+    background-color: @background_Color_GH;
+    .borderStyle(@default_border);
+}
+
+#gameDiv{
+    position:absolute;
+    .gameMargin(0,0,@default_gameHeaderH,@canvasBottom);
+    background-color: @background_Color_GD;
+    .borderStyle(@default_border);
+}
+
+#gameFooter{
+    position:absolute;
+    .gameMargin(0,0,@gameFooterTop,0);
+    background-color: @background_Color_GF;
+    .borderStyle(@default_border);
+}
+
+#gameControlPanel{
+    position:absolute;
+    .gameMargin(5px,1050px,5px,5px);
+    background-color: @color_controlPanel;
+    .borderStyle(@default_border);
+}
+
+#instructionContainer{
+    position:absolute;
+    .gameMargin(310px,410px,5px,5px);
+    background-color: @color_instructionPanel;
+    .borderStyle(@default_border);
+}
+
+#gameThemePanel{
+    position:absolute;
+    .gameMargin(950px,5px,5px,5px);
+    background-color: @color_themePanel;
+    .borderStyle(@default_border);
+}
+            

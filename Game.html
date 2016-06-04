@@ -1,0 +1,111 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Ball Shooter Game - Space Theme
+        </title>
+
+        
+		<!-- 
+			<link href="styles/game2.less" type="text/css" rel="stylesheet/less"/> 
+		-->  
+		<link href="styles/game2.css" type="text/css" rel="stylesheet"/> 
+		<script  src="library/less_js" type="text/javascript"></script>
+        <script type="text/javascript" src="library/handlebars_js"></script>
+        <script type="text/javascript" src="library/jquery_js"></script>
+
+        <script type="text/x-handlebars-template" id="instructionTemplate">
+            <table id = "gameInstructions" align="center">
+                <tr id="instructionHeaderRow">
+                    <th id="instructionHeaderCol" colspan="2">
+                        <b>Instructions for using Ball Shooter Game</b><br>
+                    </th>
+                </tr>
+                {{#each this}}
+                <tr class="instructionRow">
+                    <td class="instructionColumn" id="insColSR"><b>{{sr_inc @index}}</b>&nbsp;&nbsp;</td>
+                    <td class="instructionColumn"><b>{{ins}}</b></td>
+                </tr>
+                {{/each}}
+            </table>
+        </script>
+
+
+        <script type="text/x-handlebars-template" id="scoreBoardTemplate">
+            <section style="font-size:{{f_size}};color:{{f_color}};">
+                <b style="color:{{headColor}}">SCORE BOARD:</b>
+            &nbsp;&nbsp;<b>Total Balls Generated: {{TBallGen}}</b>
+            &nbsp;&nbsp;|&nbsp;&nbsp;<b>Total Bullets Generated: {{TBullGen}}</b>
+            &nbsp;&nbsp;|&nbsp;&nbsp;<b>Total Hits: {{THits}}</b>
+            &nbsp;&nbsp;|&nbsp;&nbsp;<b>Total Bullets Left: {{TBull}}</b>
+            </section>
+        </script>
+
+
+        <script type="text/x-handlebars-template" id="controlPanelTemplate">
+                <table><tr><th colspan="2">Game/Theme Control Panel</th></tr>
+                    {{#each this}}
+                        <tr><td>{{labelID}}:</td><td><input type="{{inType}}" id="{{nameID}}" min="{{minV}}" max="{{maxV}}"></td></tr>
+                    {{/each}}
+                </table>
+        </script>
+		
+
+        <script type="text/javascript">
+            Handlebars.registerHelper("sr_inc",function(value,options){return parseInt(value)+1});
+
+            var instructions = [{
+                        ins:"Press Space Bar to Shoot."
+                        },
+                        {
+                            ins:"Press arrow UP, DOWN for Attacker Ship's Movement."
+                        },
+                        {
+                            ins:"If a bullet touches a ball on the screen both bullet and ball gets vanished."
+                        },
+                        {
+                            ins:"If 25 balls get hit within 100 bullets, YOU WIN !"
+                        },
+                        {
+                            ins: "On winning a prompt appears and on OK the window Closes."
+                        },
+                        {
+                            ins: "If all the bullets get finished before hitting 25 balls, YOU LOOSE !"
+                        }];
+
+
+            var source1   = $("#instructionTemplate").html();
+            var template1 = Handlebars.compile(source1);
+            var output1   = template1(instructions);
+
+        </script>
+
+    </head>
+    <body id="docBody">
+        <div id="gameContainer">
+
+            <header id="gameHeader">
+            </header>
+
+            <div id="gameDiv">
+                <canvas id="ballCanvas">
+                </canvas>
+            </div>
+
+            <footer id="gameFooter">
+                <div id="gameControlPanel">
+                </div>
+
+                <div id="instructionContainer">
+                   <script>document.getElementById("instructionContainer").innerHTML = output1;</script>
+                </div>
+
+                <div id="gameThemePanel">
+                </div>
+            </footer>
+
+        </div>     
+		<script type="text/javascript" src="js/game.js"></script>
+        <script type="text/javascript" src="js/gameFunctions.js"></script>
+    </body>
+</html>
