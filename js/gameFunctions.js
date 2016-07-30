@@ -71,7 +71,9 @@ function drawBalls(){
         context.beginPath();
         context.fillStyle = ballBox[i].coloR;
         context.arc(ballBox[i].x, ballBox[i].y, ballBox[i].bs, 0, 360);
+        context.strokeStyle="red";
         context.fill();
+		context.stroke();
         context.closePath();
     }
 }
