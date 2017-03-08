@@ -9,10 +9,10 @@ var ballBox=[], bulletBox=[],index= 0,b_index= 0,attacker_position = canvas.heig
 document.onkeydown = function(event) {
     switch(event.keyCode) {
         case 38:
-            attacker_position = attacker_position - 20 ;
+            attacker_position = attacker_position - 12 ;
             break;
         case 40:
-            attacker_position = attacker_position + 20;
+            attacker_position = attacker_position + 12;
             break;
         case 32:
             bulletBox[b_index] = new Bullet(50+newAttacker.width,attacker_position+18+newAttacker.height/2);
