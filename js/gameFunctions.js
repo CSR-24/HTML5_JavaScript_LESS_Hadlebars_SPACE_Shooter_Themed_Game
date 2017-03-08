@@ -13,10 +13,9 @@ var scoreBoard = {
 var controlPanel = [
     {labelID:"Ball Size", inType: "range", nameID:"ballSize", minV:0, maxV:20},
     {labelID:"Bullet Size",inType: "range", nameID:"bulletSize", minV:0 , maxV:8},
-    // {labelID:"Bullet Speed",inType: "range", nameID:"bulletSpeed", minV:0 , maxV:20}, // cannot control it right now !
+    {labelID:"Bullet Speed",inType: "range", nameID:"bulletSpeed", minV:0 , maxV:20}, // can control it!
     {labelID:"Ball Speed",inType: "range", nameID:"ballSpeed", minV:1 , maxV:15}
 ];
-
 
 
 var themePanel = [
@@ -56,8 +55,7 @@ function Bullet(xCord,yCord){
     this.bs=document.getElementById("bulletSize").value;
     this.x=xCord;
     this.y=yCord;
-    //this.howFast = document.getElementById("bulletSpeed").value;
-    this.howFast = 10;
+    this.howFast = parseInt(document.getElementById("bulletSpeed").value);
 }
 
 
